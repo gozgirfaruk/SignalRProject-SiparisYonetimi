@@ -36,7 +36,7 @@ namespace SignalR.DataAccess.Repositories
 
         public void Insert(T entity)
         {
-           _context.Set<T>().Add(entity);
+           _context.Add(entity);
             _context.SaveChanges();
         }
 

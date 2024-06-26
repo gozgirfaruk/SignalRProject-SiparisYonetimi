@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Html.PartialAsync("/Views/AdminLayout/_HeadPartialView.cshtml")
+
+<body>
+    <div class="wrapper">
+
+        @await Html.PartialAsync("/Views/AdminLayout/_NavbarPartialView.cshtml")
+
+        @await Html.PartialAsync("/Views/AdminLayout/_SidebarPartialView.cshtml")
+
+        <div class="main-panel">
+
+            @RenderBody()
+
+        </div>
+    </div>
+</body>
+
+@await Html.PartialAsync("/Views/AdminLayout/_ScriptPartialView.cshtml")
+
+</html>

@@ -13,6 +13,11 @@ namespace SignalR.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+        public List<Product> TProductWithCategory()
+        {
+            return _productDal.ProductWithCategory();
+        }
+
         public void TDelete(Product entity)
         {
             _productDal.Delete(entity);
