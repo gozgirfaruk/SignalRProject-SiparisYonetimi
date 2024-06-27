@@ -1,0 +1,40 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "BookingList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>Rezervasyon Listesi</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">İsim</th>
+                    <th scope="col">Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.BookingID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Date.ToString("dd.MM.yyyy")</td>
+                        <td><a href="/AdminBooking/GetBooking/@item.BookingID" class="btn btn-outline-info">Detay</a></td>
+                        <td><a href="/AdminBooking/UpdateBooking/@item.BookingID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminBooking/DeleteBooking/@item.BookingID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a href="/AdminBooking/CreateBooking" class="btn btn-outline-primary">Yeni Rezervasyon Ekle</a>
+    </div>
+</div>
+
+

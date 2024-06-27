@@ -22,8 +22,27 @@ builder.Services.AddScoped<IAboutService,AboutMenager>();
 builder.Services.AddScoped<IBookingDal,EfBookingDal>();
 builder.Services.AddScoped<IBookingService,BookingMenager>();
 
-builder.Services.AddScoped<IProductDal,EfProductDal>(); 
-builder.Services.AddScoped<IProductService,ProductMenager>();
+builder.Services.AddScoped<ICategoryDal,EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService,CategoryMenager>();
+
+builder.Services.AddScoped<IContactDal,EfContactDal>();
+builder.Services.AddScoped<IContactService,Contactmenager>();
+
+builder.Services.AddScoped<IDiscountDal,EfDiscountDal>();
+builder.Services.AddScoped<IDiscountService, DiscountMenager>();
+
+builder.Services.AddScoped<IFeatureDal,EfFeatureDal>();
+builder.Services.AddScoped<IFeatureService, FeatureMenager>();
+
+builder.Services.AddScoped<IProductDal, EfProductDal>();
+builder.Services.AddScoped<IProductService, ProductMenager>();
+
+builder.Services.AddScoped<ISocialMediaDal,EfSocialMediaDal>();
+builder.Services.AddScoped<ISocialMediaService,SocialMediaMenager>();
+
+builder.Services.AddScoped<ITestimonialDal,EfTestimonialDal>();
+builder.Services.AddScoped<ITestimonialService,TestimonialMenager>();
+
 
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());

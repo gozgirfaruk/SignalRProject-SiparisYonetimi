@@ -1,4 +1,4 @@
-﻿namespace SignalRWebUI.Dtos.BookingDtos
+﻿namespace SignalR.DtoLayer.BookingDtos
 {
     public class CreateBookingDto
     {

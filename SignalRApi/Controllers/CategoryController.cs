@@ -22,7 +22,7 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var values = _categoryService.TGetListAll();
+            var values = _mapper.Map<List<ResultCategoryDto>>(_categoryService.TGetListAll());
             return Ok(values);
         }
         [HttpPost]
@@ -50,7 +50,7 @@ namespace SignalRApi.Controllers
         [HttpGet("GetCategory")]
         public IActionResult GetCategory(int id)
         {
-            var values = _categoryService.TGetById(id);
+            var values =_mapper.Map<GetCategoryDto>(_categoryService.TGetById(id));
             return Ok(values);
         }
     }

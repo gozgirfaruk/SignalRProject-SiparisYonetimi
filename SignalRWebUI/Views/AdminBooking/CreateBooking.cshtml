@@ -1,0 +1,38 @@
+﻿@using SignalR.DtoLayer.BookingDtos
+@model CreateBookingDto
+@{
+    ViewData["Title"] = "CreateBooking";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Rezervasyon Oluşturma Sayfası</div>
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<form method="post">
+
+					<input type="text" class="form-control input-pill" asp-for="Name" placeholder="İsim Soyisim"/>
+					<br />
+					<input type="number" class="form-control input-pill" asp-for="Phone" placeholder="Telefon"/>
+					<br />
+					<input type="email" class="form-control input-pill" asp-for="Mail" placeholder="E Posta" />
+					<br />
+					<input type="number" class="form-control input-pill" asp-for="PersonCount" placeholder="Kişi Sayısı" />
+					<br />
+					<input type="date" class="form-control input-pill" asp-for="Date" placeholder="Giriş Tarihi" />
+					<br />
+
+					<div class="card-action">
+						<button type="submit" class="btn btn-success">Oluştur</button>
+						<a href="/AdminBooking/BookingList" class="btn btn-danger">Vazgeç</a>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model List<ResultCategoryUIDto>
+@{
+    ViewData["Title"] = "CategoryList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>Kategori Listesi</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryID</td>
+                        <td>@item.Name</td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <span class="badge badge-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Pasif</span>
+                            }
+                        </td>
+                        <td><a href="/AdminCategory/UpdateCategory/@item.CategoryID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a href="/AdminCategory/AddCategory" class="btn btn-outline-primary">Yeni Kategori Ekle</a>
+    </div>
+</div>
+

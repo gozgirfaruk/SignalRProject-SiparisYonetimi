@@ -1,0 +1,39 @@
+﻿@model List<ResultAboutUIDto>
+@{
+    ViewData["Title"] = "AboutList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+ <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+           <h3>Hakkımızda Sayfası</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Görsel</th>
+                    <th scope="col">Başlık</th>
+                    <th scope="col">Açıklama</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AboutID</td>
+                        <td><img src="@item.ImageUrl" style="height:50px; width:50px; border-radius:5px;"/></td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td><a href="/AdminAbout/UpdateAbout/@item.AboutID" class="btn btn-outline-info">Güncelle</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

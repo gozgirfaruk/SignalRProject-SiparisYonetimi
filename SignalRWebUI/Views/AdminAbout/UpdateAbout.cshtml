@@ -1,0 +1,35 @@
+﻿@model UpdateAboutUIDto
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Hakkımda Güncelleme Sayfası</div>
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<form method="post">
+					<input type="hidden" asp-for="AboutID"/>
+                    <label>Görsel Url</label>
+                    <input type="text" class="form-control input-pill" asp-for="ImageUrl">
+					<br />
+					<label>Başlık</label>
+					<input type="text" class="form-control input-pill" asp-for="Title">
+					<br />
+					<label>Açıklama</label>
+					<input type="text" class="form-control input-pill" asp-for="Description">
+					<br />
+					<div class="card-action">
+					<button type="submit" class="btn btn-success">Ekle</button>
+					<a href="/AdminAbout/AboutList" class="btn btn-danger">Vazgeç</a>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
