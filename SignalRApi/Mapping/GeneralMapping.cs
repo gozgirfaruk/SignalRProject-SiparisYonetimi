@@ -9,6 +9,7 @@ using SignalR.DtoLayer.ProductDtos;
 using SignalR.DtoLayer.SocialMediaDtos;
 using SignalR.DtoLayer.TestimonialDtos;
 using SignalR.EntityLayer.Entities;
+using SignalRWebUI.Dtos.BookingDtos;
 
 namespace SignalRApi.Mapping
 {

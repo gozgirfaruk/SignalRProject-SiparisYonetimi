@@ -3,10 +3,22 @@ using SignalR.BusinessLayer.Concrete;
 using SignalR.DataAccess.Abstract;
 using SignalR.DataAccess.Concrete;
 using SignalR.DataAccess.EntityFramework;
+using SignalRApi.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
+    });
+});
+
+builder.Services.AddDbContext<SignalRContext>();
+
+builder.Services.AddSignalR();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -43,7 +55,11 @@ builder.Services.AddScoped<ISocialMediaService,SocialMediaMenager>();
 builder.Services.AddScoped<ITestimonialDal,EfTestimonialDal>();
 builder.Services.AddScoped<ITestimonialService,TestimonialMenager>();
 
+builder.Services.AddScoped<IOrderDal,EfOrderDal>();
+builder.Services.AddScoped<IOrderService,OrderMenager>();
 
+builder.Services.AddScoped<IOrderDetailDal,EfOrderDetailDal>();
+builder.Services.AddScoped<IOrderDetailService,OrderDetailMenager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
@@ -55,7 +71,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+app.MapHub<SignalRHub>("/SignalRHub");
+
 app.UseHttpsRedirection();
+
+
 
 app.UseAuthorization();
 

@@ -10,5 +10,7 @@
         public bool Status { get; set; }
         public int CategoryID { get; set; }
         public Category Category { get; set; }
+
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.BookingDtos;
 using SignalR.EntityLayer.Entities;
+using SignalRWebUI.Dtos.BookingDtos;
 
 namespace SignalRApi.Controllers
 {
