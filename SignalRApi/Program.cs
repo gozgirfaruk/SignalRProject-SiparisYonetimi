@@ -61,6 +61,12 @@ builder.Services.AddScoped<IOrderService,OrderMenager>();
 builder.Services.AddScoped<IOrderDetailDal,EfOrderDetailDal>();
 builder.Services.AddScoped<IOrderDetailService,OrderDetailMenager>();
 
+builder.Services.AddScoped<IMoneyCaseDal,EfMoneyCaseDal>();
+builder.Services.AddScoped<IMoneyCaseService,MoneyCaseMenager>();
+
+builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
+builder.Services.AddScoped<IMenuTableService, MenuTableMenager>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
