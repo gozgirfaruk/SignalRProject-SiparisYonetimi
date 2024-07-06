@@ -67,6 +67,9 @@ builder.Services.AddScoped<IMoneyCaseService,MoneyCaseMenager>();
 builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
 builder.Services.AddScoped<IMenuTableService, MenuTableMenager>();
 
+builder.Services.AddScoped<ISliderDal,EfSliderDal>();
+builder.Services.AddScoped<ISliderService,SliderMenager>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 

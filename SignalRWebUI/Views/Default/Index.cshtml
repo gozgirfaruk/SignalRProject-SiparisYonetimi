@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+@* NOT : Navbar=_NavbarPartial ve  Navbar+Slider=_SliderViewPartial iki farklı partial olarak kullanılacaktır . *@
+
+@await Component.InvokeAsync("_SliderViewPartial")
+
+@await Component.InvokeAsync("_OfficerViewPartial")
+
+@await Component.InvokeAsync("_FoodViewPartial")
+
+@await Component.InvokeAsync("_AboutViewPartial")
+
+@await Component.InvokeAsync("_BookViewPartial")
+
+@await Component.InvokeAsync("_ClientViewPartial")
+
+
