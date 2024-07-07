@@ -13,7 +13,10 @@
             <li data-filter=".burger">Hamburger</li>
             <li data-filter=".pizza">Pizza</li>
             <li data-filter=".pasta">Makarna</li>
-            <li data-filter=".fries">Atıştırmalık</li>
+            <li data-filter=".fries">Kızartma</li>
+            <li data-filter=".fries">Salata</li>
+            <li data-filter=".fries">Tatlı</li>
+            <li data-filter=".fries">İçecek</li>
         </ul>
 
         <div class="filters-content">
@@ -37,7 +40,7 @@
                                     <h6>
                                         @item.Price₺
                                     </h6>
-                                    <a href="">
+                                    <a href="#" onclick="showproductid(@item.ProductID)">
                                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                         <g>
                                         <g>
@@ -108,3 +111,19 @@
         </div>
     </div>
 </section>
+
+<script>
+    function showproductid(value) { 
+        var id = value;
+        $.ajax({
+            type: 'post',
+            data: { item: id },
+            contentType: 'json',
+            success: function () {
+                swal("Harika!", "Ürün Başarı İle Sepetinize Eklendi!", "success");
+            }
+
+        });
+    }
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

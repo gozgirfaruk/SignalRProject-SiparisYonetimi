@@ -5,8 +5,11 @@ using SignalR.DataAccess.Concrete;
 using SignalR.DataAccess.EntityFramework;
 using SignalRApi.Hubs;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews().AddJsonOptions(options=>options.JsonSerializerOptions.ReferenceHandler=ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddCors(opt =>
 {
@@ -69,6 +72,9 @@ builder.Services.AddScoped<IMenuTableService, MenuTableMenager>();
 
 builder.Services.AddScoped<ISliderDal,EfSliderDal>();
 builder.Services.AddScoped<ISliderService,SliderMenager>();
+
+builder.Services.AddScoped<IBasketService, BasketMenager>();
+builder.Services.AddScoped<IBasketDal, EfBasketDal>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+@await Html.PartialAsync("/Views/UILayoutPartial/_NavbarPartial.cshtml")
+<br /><br />
+@await Component.InvokeAsync("_FoodViewPartial")
