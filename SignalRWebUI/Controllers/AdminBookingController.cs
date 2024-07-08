@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SignalR.DtoLayer.BookingDtos;
-using SignalRWebUI.Dtos.AboutDtos;
 using SignalRWebUI.Dtos.BookingDtos;
-using System.Configuration;
-using System.Net.Http;
 using System.Text;
 
 namespace SignalRWebUI.Controllers
 {
-    public class AdminBookingController : Controller
+	public class AdminBookingController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -62,7 +59,7 @@ namespace SignalRWebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateBooking(CreateBookingDto dto)
+        public async Task<IActionResult> CreateBooking(CreateBookingsDto dto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(dto);
