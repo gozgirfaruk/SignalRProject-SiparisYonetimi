@@ -1,0 +1,53 @@
+﻿@model List<NotificationsResultDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>Bildirim Listesi</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.@item.NotificationID</td>
+                        <td>@item.Description</td>
+                        <td>@item.Date.ToShortDateString()</td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <a href="/Notifications/ChangeNotificationToUnRead/@item.NotificationID">
+                                    <span class="badge badge-success">Okundu</span>
+                                </a>
+                                
+                            }
+                            else
+                            {
+                                <a href="/Notifications/ChangeNotificationToRead/@item.NotificationID"><span class="badge badge-warning">Okunmadı</span></a>
+                                
+                            }
+                        </td>
+                        <td><a href="/Notifications/UpdateNotification/@item.NotificationID" class="btn btn-outline-info">Oku</a></td>
+                        <td><a href="/Notifications/DeleteNotification/@item.NotificationID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

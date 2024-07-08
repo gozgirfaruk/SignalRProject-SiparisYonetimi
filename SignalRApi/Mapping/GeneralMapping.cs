@@ -5,6 +5,7 @@ using SignalR.DtoLayer.CategoryDtos;
 using SignalR.DtoLayer.ContactDtos;
 using SignalR.DtoLayer.DiscountDtos;
 using SignalR.DtoLayer.FeatureDtos;
+using SignalR.DtoLayer.NotificationDtos;
 using SignalR.DtoLayer.ProductDtos;
 using SignalR.DtoLayer.SocialMediaDtos;
 using SignalR.DtoLayer.TestimonialDtos;
@@ -62,6 +63,10 @@ namespace SignalRApi.Mapping
             CreateMap<Testimonial, CreateTestimonialDto>().ReverseMap();
             CreateMap<Testimonial, UpdateTestimonialDto>().ReverseMap();
             CreateMap<Testimonial, GetTestimonialDto>().ReverseMap();
+
+            CreateMap<Notification,ResultNotificationDto>().ReverseMap();
+            CreateMap<Notification,CreateNotificationDto>().ReverseMap();
+            CreateMap<Notification,UpdateNotificationDto>().ReverseMap();
         }
     }
 }

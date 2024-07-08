@@ -76,6 +76,9 @@ builder.Services.AddScoped<ISliderService,SliderMenager>();
 builder.Services.AddScoped<IBasketService, BasketMenager>();
 builder.Services.AddScoped<IBasketDal, EfBasketDal>();
 
+builder.Services.AddScoped<INotificationService, NotificationMenager>();
+builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 

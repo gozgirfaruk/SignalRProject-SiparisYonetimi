@@ -13,18 +13,20 @@ namespace SignalRApi.Hubs
         private readonly IMoneyCaseService _moneyCaseService;
         private readonly IMenuTableService _menuTableService;
         private readonly IBookingService _bookingService;
+        private readonly INotificationService _notificationService;
 
-        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IMenuTableService menuTableService, IBookingService bookingService)
-        {
-            _categoryService = categoryService;
-            _productService = productService;
-            _orderService = orderService;
-            _moneyCaseService = moneyCaseService;
-            _menuTableService = menuTableService;
-            _bookingService = bookingService;
-        }
+		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IMenuTableService menuTableService, IBookingService bookingService, INotificationService notificationService)
+		{
+			_categoryService = categoryService;
+			_productService = productService;
+			_orderService = orderService;
+			_moneyCaseService = moneyCaseService;
+			_menuTableService = menuTableService;
+			_bookingService = bookingService;
+			_notificationService = notificationService;
+		}
 
-        public async Task SendStatistic()
+		public async Task SendStatistic()
 		{
 			var value = _categoryService.TGetCategoryCount();
 			await Clients.All.SendAsync("ReceiverCategoryCount", value);
@@ -91,6 +93,16 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiverBookingList", value);
         }
 
+
+        public async Task SendNotification()
+        {
+            var value = _notificationService.TNotificationByUnRead();
+            await Clients.All.SendAsync("ReceiverNotificationUnRead",value);
+
+            var value2=_notificationService.TGetNotificationContentUnRead();
+            await Clients.All.SendAsync("ReceiverContentNotification",value2);
+        }
+    
 
 	}
 }
