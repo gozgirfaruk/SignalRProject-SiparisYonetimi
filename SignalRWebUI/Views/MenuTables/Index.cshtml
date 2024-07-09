@@ -1,0 +1,78 @@
+﻿@model List<TableListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string status = "";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Anlık Masa İşlemleri</h4>
+        <a href="/MenuTables/CreateTable" class="btn btn-primary" style="width:1500px; border-radius:15px;">Yeni Masa Ekle</a>
+        <br />  <br />  <br />
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.Status == false)
+                {
+                    <div class="col-md-3">
+                        <div class="card card-stats card-success">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <p class="card-category">Masa Boş</p>
+                                            <img src="/freepikicon/round-table_6404635.png" />
+                                        </div>
+                                    </div>
+                                    <div class="col-7 d-flex align-items-center">
+                                        <div class="numbers">
+                                            <h4 class="card-title">@item.Name</h4>
+                                          
+                                            <a href="/MenuTables/UpdateTable/@item.MenuTableID" class="badge badge-warning">Güncelle</a>
+                                            <a href="/MenuTables/DeleteTable/@item.MenuTableID" class="badge badge-primary">Sil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3">
+                        <div class="card card-stats card-danger">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <p class="card-category">Masa Dolu</p>
+                                            <img src="/freepikicon/player_10038630.png" />
+                                        </div>
+                                    </div>
+                                    <div class="col-7 d-flex align-items-center">
+                                        <div class="numbers">
+                                            <h4 class="card-title">@item.Name</h4>
+                                            <a href="/MenuTables/UpdateTable/@item.MenuTableID" class="badge badge-warning">Güncelle</a>
+                                            <a href="/MenuTables/DeleteTable/@item.MenuTableID" class="badge badge-primary">Sil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

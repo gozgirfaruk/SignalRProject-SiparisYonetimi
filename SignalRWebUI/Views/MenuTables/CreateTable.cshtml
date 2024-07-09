@@ -1,0 +1,28 @@
+﻿@model CreateTableDto
+@{
+    ViewData["Title"] = "CreateTable";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-md-12">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Yeni Masa Ekleme Sayfası</div>
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<form method="post">
+					<label>Masa Adı</label>
+					<input type="text" class="form-control input-pill" asp-for="Name">
+					<br />
+
+					<div class="card-action">
+						<button type="submit" class="btn btn-success">Ekle</button>
+						<a href="/MenuTables/Index" class="btn btn-danger">Vazgeç</a>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
