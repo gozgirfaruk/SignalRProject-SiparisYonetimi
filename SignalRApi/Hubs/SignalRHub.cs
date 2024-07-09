@@ -25,8 +25,8 @@ namespace SignalRApi.Hubs
 			_bookingService = bookingService;
 			_notificationService = notificationService;
 		}
-
-		public async Task SendStatistic()
+        public static int clientCount { get; set; } = 0;
+        public async Task SendStatistic()
 		{
 			var value = _categoryService.TGetCategoryCount();
 			await Clients.All.SendAsync("ReceiverCategoryCount", value);
@@ -73,7 +73,6 @@ namespace SignalRApi.Hubs
             var value15 = _menuTableService.TMenuTableCount();
             await Clients.All.SendAsync("ReceiverMenuTableCount", value15);
         }
-	
 
         public async Task SendProgress()
         {
@@ -93,7 +92,6 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiverBookingList", value);
         }
 
-
         public async Task SendNotification()
         {
             var value = _notificationService.TNotificationByUnRead();
@@ -103,6 +101,23 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiverContentNotification",value2);
         }
     
+        public async Task SendMessage(string user,string message)
+        {
+            await Clients.All.SendAsync("ReceiverMessage",user,message);
+        }
 
-	}
+        public override async Task OnConnectedAsync()
+        {
+            clientCount++;
+            await Clients.All.SendAsync("ReceiverClientCount", clientCount);
+           await base.OnConnectedAsync();
+        }
+
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            clientCount--;
+            await Clients.All.SendAsync("ReceiverClientCount", clientCount);
+            await base.OnDisconnectedAsync(exception);
+        }
+    }
 }

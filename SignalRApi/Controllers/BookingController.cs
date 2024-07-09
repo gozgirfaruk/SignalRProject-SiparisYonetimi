@@ -57,5 +57,18 @@ namespace SignalRApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("StatusApproved")]
+        public IActionResult StatusApproved(int id)
+        {
+            _bookingService.TBookingStatusApproved(id);
+            return Ok();
+        }
+        [HttpGet("StatusCancel")]
+        public IActionResult StatusCancel(int id)
+        {
+            _bookingService.TBookingStatusCancel(id);
+            return Ok();
+        }
+
     }
 }

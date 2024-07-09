@@ -1,0 +1,56 @@
+﻿@using SignalRWebUI.Dtos.DiscountDtos
+@model List<ResultDiscountDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>Aktif İndirim Listesi</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">İndirim Oranı</th>
+                    <th scope="col">Yayımda</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:15px;" />&nbsp; @item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Amount %</td>
+                        <td>
+                            @if (item.Status == false)
+                            {
+                                <a href="/AdminDiscount/ChangeStatusToTrue/@item.DiscountID" class="badge badge-warning">Pasif</a>
+                            }
+                            else
+                            {
+                                <a href="/AdminDiscount/ChangeStatusToFalse/@item.DiscountID" class="badge badge-success">Aktif</a>
+                            }
+                        </td>
+                
+                        <td><a href="/AdminDiscount/UpdateCategory/@item.DiscountID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminDiscount/DeleteCategory/@item.DiscountID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a href="/AdminDiscount/CreateDiscount" class="btn btn-outline-primary">Yeni İndirim Kuponu Ekle</a>
+    </div>
+</div>
+

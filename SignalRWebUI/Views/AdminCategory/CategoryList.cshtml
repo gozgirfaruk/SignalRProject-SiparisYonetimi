@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "CategoryList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <div class="card">
@@ -22,8 +23,9 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    count++;
                     <tr>
-                        <td>@item.CategoryID</td>
+                        <td>@count</td>
                         <td>@item.Name</td>
                         <td>
                             @if (item.Status == true)

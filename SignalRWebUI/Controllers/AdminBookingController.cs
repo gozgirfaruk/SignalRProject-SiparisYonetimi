@@ -22,7 +22,7 @@ namespace SignalRWebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<SignalRWebUI.Dtos.BookingDtos.ResultBookingDto>>(jsonData);
                 return View(values);
             }
             return View();
@@ -35,13 +35,13 @@ namespace SignalRWebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateBookingDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<SignalRWebUI.Dtos.BookingDtos.UpdateBookingDto>(jsonData);
                 return View(values);
             }
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateBooking(UpdateBookingDto dto)
+        public async Task<IActionResult> UpdateBooking(SignalRWebUI.Dtos.BookingDtos.UpdateBookingDto dto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(dto);
@@ -61,6 +61,7 @@ namespace SignalRWebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingsDto dto)
         {
+            dto.Description = "Rezervasyon Alındı";
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(dto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -82,6 +83,28 @@ namespace SignalRWebUI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> StatusApprover(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"https://localhost:44361/api/Booking/StatusApproved?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("BookingList");
+            }
+            return View();
+		}
+
+        public async Task<IActionResult> StatusCancel(int id)
+        {
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"https://localhost:44361/api/Booking/StatusCancel?id={id}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("BookingList");
+			}
+			return View();
+		}
     }
 
 

@@ -22,7 +22,7 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult DiscountList()
         {
-            var values =_discountService.TGetListAll();
+            var values = _discountService.TGetListAll();
             return Ok(values);
         }
 
@@ -50,6 +50,19 @@ namespace SignalRApi.Controllers
         {
             var values = _discountService.TGetById(id);
             return Ok(values);
+        }
+
+        [HttpGet("ChangeToTrue")]
+        public IActionResult ChangeToTrue(int id)
+        {
+            _discountService.TChangeStatusToTrue(id);
+            return Ok();
+        }
+        [HttpGet("ChangeToFalse")]
+        public IActionResult ChangeToFalse(int id)
+        {
+            _discountService.TChangeStatusToFalse(id);
+            return Ok();
         }
     }
 }
