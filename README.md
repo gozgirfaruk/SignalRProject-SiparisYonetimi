@@ -1,3 +1,6 @@
+## ℹ️ Proje Hakkında 
+Restorana ait ürünlerin, kullanıcılar tarafından listelenebileceği,almak istedikleri ürünleri seçerek kendi sipariş sepetlerini oluşturabilecekleri,restoran tarafından belirlenen haftanın ürünleri ve indirimleri gibi ayrıcalıklara ulaşabilecekleri bir vitrin paneli sunar. Ayrıca rezervasyon formu  veya  anlık sunucular üzerinden restoran ile iletişime geçebilirler. SignalR ile anlık olarak verilen siparişler,güncel masa olayları ve sipariş döngüsü admin yönetim sayfasında görüntülenir.
+
 
 
 
