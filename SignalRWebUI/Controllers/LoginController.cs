@@ -36,7 +36,7 @@ namespace SignalRWebUI.Controllers
 
         public async Task<IActionResult> LogOut()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _signMenager.SignOutAsync();
             return RedirectToAction("Index", "Default");
         }
     }
