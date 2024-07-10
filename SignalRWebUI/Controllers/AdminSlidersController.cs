@@ -1,27 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SignalRWebUI.Dtos.CategoryDtos;
 using SignalRWebUI.Dtos.SliderDtos;
 
-namespace SignalRWebUI.ViewComponents
+namespace SignalRWebUI.Controllers
 {
-    public class _SliderViewPartial : ViewComponent
+    public class AdminSlidersController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _SliderViewPartial(IHttpClientFactory httpClientFactory)
+        public AdminSlidersController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44361/api/Sliders");
-        
-                var jsonData=await responseMessage.Content.ReadAsStringAsync();
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultSlidersDto>>(jsonData);
                 return View(values);
-         
+            }
+            return View();
         }
     }
 }

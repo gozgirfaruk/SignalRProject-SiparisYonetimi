@@ -38,6 +38,11 @@ namespace SignalR.BusinessLayer.Concrete
             return _discountDal.GetListAll();
         }
 
+        public List<Discount> TGetListDiscountTrue()
+        {
+            return _discountDal.GetListDiscountTrue();
+        }
+
         public void TInsert(Discount entity)
         {
             _discountDal.Insert(entity);

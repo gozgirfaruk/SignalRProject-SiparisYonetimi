@@ -64,5 +64,12 @@ namespace SignalRApi.Controllers
             _discountService.TChangeStatusToFalse(id);
             return Ok();
         }
+
+        [HttpGet("GetlistTrue")]
+        public IActionResult GetlistTrue()
+        {
+            var values = _discountService.TGetListDiscountTrue();
+            return Ok(values);
+        }
     }
 }

@@ -1,0 +1,49 @@
+﻿@using SignalRWebUI.Dtos.SliderDtos
+@model List<ResultSlidersDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>Afiş Listesi</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Afiş1 Başlık</th>
+                    <th scope="col">Afiş1 Açıklama</th>
+                    <th scope="col">Afiş2 Başlık</th>
+                    <th scope="col">Afiş2 Açıklama</th>
+                    <th scope="col">Afiş3 Başlık</th>
+                    <th scope="col">Afiş3 Açıklama</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                
+                    <tr>
+                        <td>@item.SliderID</td>
+                        <td>@item.Title1</td>
+                        <td>@item.Description1</td>
+                        <td>@item.Title2</td>
+                        <td>@item.Description2</td>
+                        <td>@item.Title3</td>
+                        <td>@item.Description3</td>
+                        <td><a href="/AdminSliders/UpdateSlider/@item.SliderID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminSliders/DeleteSlider/@item.SliderID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a href="/AdminSliders/CreateSlider" class="btn btn-outline-primary">Yeni Kategori Ekle</a>
+    </div>
+</div>
+

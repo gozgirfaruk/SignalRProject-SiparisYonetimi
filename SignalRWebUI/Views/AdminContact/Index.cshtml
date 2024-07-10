@@ -1,0 +1,43 @@
+﻿@using SignalRWebUI.Dtos.ContactsDtos
+@model List<ResultContactsDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <br />
+    <div class="card-body">
+
+        <div class="card-sub">
+            <h3>İletişim Bilgileri</h3>
+        </div>
+        <table class="table table-bordered table-bordered-bd-warning mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Lokasyon</th>
+                    <th scope="col">e-Posta</th>
+                    <th scope="col">Telefon</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                   
+                    <tr>
+                        <td>@item.ContactID</td>
+                        <td>@item.Location</td>
+                        <td>@item.Mail</td>
+                        <td>@item.Phone</td>
+                        <td><a href="/AdminContact/UpdateContact/@item.ContactID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminContact/DeleteContact/@item.ContactID" class="btn btn-outline-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a href="/AdminContact/CreateContact" class="btn btn-outline-primary">Yeni İletişim Ekle</a>
+    </div>
+</div>
+

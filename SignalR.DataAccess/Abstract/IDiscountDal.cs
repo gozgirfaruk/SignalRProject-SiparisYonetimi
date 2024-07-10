@@ -6,5 +6,6 @@ namespace SignalR.DataAccess.Abstract
     {
         void ChangeStatusToTrue(int id);
         void ChangeStatusToFalse(int id);
+        List<Discount> GetListDiscountTrue();
     }
 }
