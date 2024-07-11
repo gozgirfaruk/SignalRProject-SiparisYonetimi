@@ -6,6 +6,7 @@ SignalR kütüphanesi ile anlık bildirim, anlık durum takibi,anlık mesajlaşm
 ## 💻 Projeye Ait Bileşenler
 * Asp.Net Core 6.0
 * Asp.Net Core Web Api
+* N-tier Arc.
 * MsSql
 * SignalR
 * Identity
